@@ -2,3 +2,6 @@
 build
 *.iml
 
+bktree.c
+bktree.*.so
+bktree.html
