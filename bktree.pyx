@@ -1,3 +1,7 @@
+"""
+
+"""
+
 from collections import deque
 
 def hamming_distance(l, r):
@@ -48,13 +52,16 @@ class BKTree:
 
     """
 
-    def __init__(self, distance_func=hamming_distance, words=None):
+    def __init__(self, distance_func=hamming_distance, words=None, sanitize=False):
         """
 
         :param distance_func:
+        :param words:
+        :param sanitize:
         """
         self._tree = None
         self._distance_func = distance_func
+        self.sanitize = sanitize
 
         if words is not None:
             self.add(words)
@@ -72,7 +79,8 @@ class BKTree:
             self.__add(words)
 
     def __add(self, node):
-        node = node.strip().lower()
+        if self.sanitize is True:
+            node = node.strip().lower()
 
         if self._tree is None:
             self._tree = (node, {})
@@ -94,6 +102,10 @@ class BKTree:
         :param radius:
         :return:
         """
+
+        if self.sanitize is True:
+            node = node.strip().lower()
+
         if self._tree is None:
             return []
 
@@ -112,4 +124,5 @@ class BKTree:
 
 if __name__ == '__main__':
     import doctest
+
     doctest.testmod()
