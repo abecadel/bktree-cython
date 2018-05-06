@@ -1,12 +1,37 @@
 from collections import deque
 
+def hamming_distance(l, r):
+    """
+
+    :param l:
+    :param r:
+    :return:
+    """
+    l = list(l)
+    r = list(r)
+    l_len = len(l)
+    r_len = len(r)
+
+    distance = l_len - r_len
+
+    if distance < 0:
+        distance = -distance
+    elif distance > 0:
+        l_len = r_len
+
+    for i in range(l_len):
+        if l[i] is not r[i]:
+            distance += 1
+
+    return distance
+
 
 class BKTree:
     """
 
     """
 
-    def __init__(self, distance_func):
+    def __init__(self, distance_func=hamming_distance):
         """
 
         :param distance_func:
