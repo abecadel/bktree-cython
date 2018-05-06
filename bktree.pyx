@@ -2,20 +2,19 @@ from collections import deque
 
 def hamming_distance(l, r):
     """
-    >>> zero = 'paper'
-    >>> ones = ['paaer', 'paperr', 'pape']
-    >>> twos = ['peeer', 'pap']
-    >>> hamming_distance(zero, 'paper')
+    >>> hamming_distance('paper', 'paper')
     0
-    >>> hamming_distance(ones[0], 'paper')
+    >>> hamming_distance('paaer', 'paper')
     1
-    >>> hamming_distance(ones[1], 'paper')
+    >>> hamming_distance('paperr', 'paper')
     1
-    >>> hamming_distance(ones[2], 'paper')
+    >>> hamming_distance('pape', 'paper')
     1
-    >>> hamming_distance(twos[0], 'paper')
+    >>> hamming_distance('peeer', 'paper')
     2
-    >>> hamming_distance(twos[1], 'paper')
+    >>> hamming_distance('pap', 'paper')
+    2
+    >>> hamming_distance('paperrr', 'paper')
     2
 
     :param l:
@@ -43,6 +42,9 @@ def hamming_distance(l, r):
 
 class BKTree:
     """
+    >>> tree = BKTree(words=['paper','paaer','paaar'])
+    >>> tree.search('paper', 2)
+    [(0, 'paper'), (1, 'paaer'), (2, 'paaar')]
 
     """
 
